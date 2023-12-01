@@ -15,8 +15,8 @@ type MongoRepository struct {
 	client   mongo.Client
 }
 
-func CreateRepository() MongoRepository {
-	clientOptions := options.Client().ApplyURI("mongodb://localhost:27017")
+func CreateRepository(mongodbURI string) MongoRepository {
+	clientOptions := options.Client().ApplyURI(mongodbURI)
 
 	client, err := mongo.Connect(context.Background(), clientOptions)
 	if err != nil {
